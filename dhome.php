@@ -7,10 +7,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dealer Page</title>
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="css/stl.css">
 
 </head>
@@ -49,14 +49,13 @@
             <form action="LoginDealer.php">
                 <input type="submit" value="Dealer Login" class="btn">
             </form>
-            <p><div class="eg">Dont have an account ?</div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Register</button>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                  <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegCustomer.php" target="_self">Customer Registration</a></button></li>
-                  <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegDealer.php" target="_self">Dealer Registration</a></button></li>
-                </ul>
-            </div></p>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#">Dealer Regitration</a>
+                        <a href="#">Customer Regitration</a>
+                    </div>
+            </div>
     </div>
 
 
