@@ -37,7 +37,6 @@
         <?php
 
             if(isset($_POST['submit'])){
-                $i=1;
                 $dealer=$_SESSION['dealer'];
                 $veh_price=$_POST['car_price'];
                 $veh_model=$_POST['car_model'];
