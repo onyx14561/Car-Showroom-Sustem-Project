@@ -35,7 +35,7 @@
 
         </nav>
         <div id="login-btn">
-        <font size=5>Welcome<button class="btn"><?php echo $_SESSION['dealer']; ?></button>
+        <font size=5>Welcome Dealer<button class="btn"></font><?php echo $_SESSION['dealer']; ?></button>
             <i far fa-user></i>
         </div>
     </header>
@@ -49,13 +49,14 @@
             <form action="LoginDealer.php">
                 <input type="submit" value="Dealer Login" class="btn">
             </form>
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#">Dealer Regitration</a>
-                        <a href="#">Customer Regitration</a>
-                    </div>
-            </div>
+            <p><div class="eg">Dont have an account ?</div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Register</button>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                  <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegCustomer.php" target="_self">Customer Registration</a></button></li>
+                  <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegDealer.php" target="_self">Dealer Registration</a></button></li>
+                </ul>
+            </div></p>
     </div>
 
 
@@ -64,8 +65,6 @@
     <section class="home" id="home">
         <h1 class="home-parallax" data-speed="-2">rn's cars shop </h1>
         <img class="home-parallax" data-speed="5"  src="image/home2.png" alt="">
-        <a href="#" class="btn home-parallax" data-speed="7">explore car</a>
-
     </section>
 
 
@@ -81,34 +80,27 @@
 <section class="icons-container">
 
     <div class="icons">
-        <i class="fas fa-home"></i>
+        <i class="fa-solid fa-plus"></i>
         <div class="content">
-            <h3>150+</h3>
-            <p>parts stores</p>
+            <form method="POST" action="addcar.php">  
+                <input type="submit" value="Add a new Car" class="btn"/>  
+            </form>
         </div>
     </div>
 
     <div class="icons">
-        <i class="fas fa-car"></i>
+        <i class="fa-regular fa-square-minus"></i>
         <div class="content">
-            <h3>4770+</h3>
-            <p>cars sold</p>
+            <form method="POST" action="#">  
+                <input type="submit" value="Remove a Car" class="btn"/>  
+            </form>
         </div>
     </div>
 
     <div class="icons">
-        <i class="fas fa-users"></i>
+        <i class="fa-regular fa-pen-to-square"></i>
         <div class="content">
-            <h3>320+</h3>
-            <p>happy clients</p>
-        </div>
-    </div>
-
-    <div class="icons">
-        <i class="fas fa-car"></i>
-        <div class="content">
-            <h3>1500+</h3>
-            <p>news cars</p>
+            <h3>Edit Car Details</h3>
         </div>
     </div>
 
