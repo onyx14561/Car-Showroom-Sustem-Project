@@ -2,21 +2,25 @@
     session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        .eg{
+            font-size:30px;
+        }
+    </style>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car selling website</title>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />   
     <link rel="stylesheet" href="css/stl.css">
 
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
     <!-- header section starts -->
     <header class="header">
         <div id="menu-btn" class="fas fa-bars"></div>
@@ -29,20 +33,12 @@
             <a href="#review">review</a>
             <a href="#contact">contact</a>
 
-
-
-
-
         </nav>
-        <div id="login-btn">
-        <font size=5>Welcome<button class="btn"><?php echo $_SESSION['uname']; ?></button>
-            <i far fa-user></i>
-        </div>
     </header>
     <!-- header section ends -->
     <!-- login form -->
     <div class="login-form-container">
-       <span class="fas fa-times" id="close-login-form"></span>
+        <span class="fas fa-times" id="close-login-form"></span>
             <form action="LoginCustomer.php">
                 <input type="submit" value="Customer Login" class="btn">
             </form>
@@ -53,8 +49,8 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Register</button>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                  <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegCustomer.php" target="_self">Customer Registration</a></button></li>
-                  <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegDealer.php" target="_self">Dealer Registration</a></button></li>
+                    <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegCustomer.php" target="_self">Customer Registration</a></button></li>
+                    <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegDealer.php" target="_self">Dealer Registration</a></button></li>
                 </ul>
             </div></p>
     </div>
@@ -66,7 +62,10 @@
         <h1 class="home-parallax" data-speed="-2">rn's cars shop </h1>
         <img class="home-parallax" data-speed="5"  src="image/home2.png" alt="">
         <a href="#" class="btn home-parallax" data-speed="7">explore car</a>
-
+        <div id="login-btn">
+            <div class="eg">Welcome </div><button class="btn"><?php echo $_SESSION['uname']; ?></button>
+            <i far fa-user></i>
+        </div>
     </section>
 
 
@@ -114,6 +113,118 @@
     </div>
 
 </section>
+<!-- icons section ends header -->
+<section class="vehicles" id="vehicles">
+
+    <h1 class="heading"> Exclusive <span>Stock</span> </h1>
+
+    <div class="swiper vehicles-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="image/vehicle-1.png" alt="">
+                <div class="content">
+                    <h3>new model</h3>
+                    <div class="price"> <span>price : </span> 762,000/- </div>
+                    <p>
+                        new
+                        <span class="fas fa-circle"></span> 2021
+                        <span class="fas fa-circle"></span> automatic
+                        <span class="fas fa-circle"></span> petrol
+                        <span class="fas fa-circle"></span> 183mph
+                    </p>
+                    <a href="#" class="btn">check out</a>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/vehicle-2.png" alt="">
+                <div class="content">
+                    <h3>new model</h3>
+                    <div class="price"> <span>price : </span> 762,000/- </div>
+                    <p>
+                        new
+                        <span class="fas fa-circle"></span> 2021
+                        <span class="fas fa-circle"></span> automatic
+                        <span class="fas fa-circle"></span> petrol
+                        <span class="fas fa-circle"></span> 183mph
+                    </p>
+                    <a href="#" class="btn">check out</a>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/vehicle-3.png" alt="">
+                <div class="content">
+                    <h3>new model</h3>
+                    <div class="price"> <span>price : </span> 762,000/- </div>
+                    <p>
+                        new
+                        <span class="fas fa-circle"></span> 2021
+                        <span class="fas fa-circle"></span> automatic
+                        <span class="fas fa-circle"></span> petrol
+                        <span class="fas fa-circle"></span> 183mph
+                    </p>
+                    <a href="#" class="btn">check out</a>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/vehicle-4.png" alt="">
+                <div class="content">
+                    <h3>new model</h3>
+                    <div class="price"> <span>price : </span> 762,000/- </div>
+                    <p>
+                        new
+                        <span class="fas fa-circle"></span> 2021
+                        <span class="fas fa-circle"></span> automatic
+                        <span class="fas fa-circle"></span> petrol
+                        <span class="fas fa-circle"></span> 183mph
+                    </p>
+                    <a href="#" class="btn">check out</a>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/vehicle-5.png" alt="">
+                <div class="content">
+                    <h3>new model</h3>
+                    <div class="price"> <span>price : </span> 762,000/- </div>
+                    <p>
+                        new
+                        <span class="fas fa-circle"></span> 2021
+                        <span class="fas fa-circle"></span> automatic
+                        <span class="fas fa-circle"></span> petrol
+                        <span class="fas fa-circle"></span> 183mph
+                    </p>
+                    <a href="#" class="btn">check out</a>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/vehicle-6.png" alt="">
+                <div class="content">
+                    <h3>new model</h3>
+                    <div class="price"> <span>price : </span> 762,000/- </div>
+                    <p>
+                        new
+                        <span class="fas fa-circle"></span> 2021
+                        <span class="fas fa-circle"></span> automatic
+                        <span class="fas fa-circle"></span> petrol
+                        <span class="fas fa-circle"></span> 183mph
+                    </p>
+                    <a href="#" class="btn">check out</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+</section>
 
 
 
@@ -122,7 +233,9 @@
 
 
 
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="js/scrpt.js"></script>
 </body>
+
 
 </html>

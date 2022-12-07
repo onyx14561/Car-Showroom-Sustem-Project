@@ -398,3 +398,7 @@ opacity:100%;
          font-size: 50%;
      }
  }
+
+ .home .welcome{ 
+    font-weight: bold;  
+ }

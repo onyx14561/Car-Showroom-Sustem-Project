@@ -32,10 +32,6 @@
             <a href="#review">review</a>
             <a href="#contact">contact</a>
 
-
-
-
-
         </nav>
         <div id="login-btn">
             <button class="btn">login</button>
