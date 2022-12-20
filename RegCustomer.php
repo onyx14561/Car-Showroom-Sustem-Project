@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $name_error='';
     $con=new mysqli('localhost','root','','car showroom'); 
     if($con->connect_errno)
     {
@@ -8,92 +9,62 @@
     }
     else
     {
-        echo "Connected to Database succesfully";
+        echo "<p style:'color=red';>Database connected</p>";
     }
+   if(isset($_POST['submit']))
+    {
+        if(empty($_POST['customer_name']) || empty($_POST['password'])){
+            $error = "Some fields may be empty";
+        }
+        else{
+            $Cus_name=$_POST['customer_name'];
+            $Cus_pass=$_POST['password'];
+            $Address=$_POST['address'];
+            
+            $sql_u = "SELECT * FROM customer WHERE Cus_name='$Cus_name'";
+            $res_u = mysqli_query($con,$sql_u);
+            if (mysqli_num_rows($res_u) > 0) {
+                $name_error = "Sorry... username already taken"; 	
+            }
+            else if($Cus_name!="" && $Cus_pass!="")
+            {
+                $sql="insert into customer values('$Cus_name','$Cus_pass','$Address')";
+                if($con->query($sql))
+                {
+                    echo "data stored";
+                    header('location:LoginCustomer.php'); 
+                }
+            }
+        }
+    }
+ 
 ?>
 
 <html>
     <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
-        <style>
-        body{
-            background-image: url("image/letter-bg.png"),url("image/letter-bg.png"),url("image/home2.png");
-            background-repeat: no-repeat,no-repeat,no-repeat;
-            background-position: top,top,bottom;
-            }
-
-        .name {
-            font-family: "Audiowide", sans-serif;
-            position: absolute;
-            bottom: 678px;
-            right: 800px;
-            font-size: 20px;
-        }
-        .pass {
-            font-family: "Audiowide", sans-serif;
-            position: absolute;
-            bottom: 630px;
-            right: 800px;
-            font-size: 20px;
-        }
-        .addre {
-            font-family: "Audiowide", sans-serif;
-            position: absolute;
-            bottom: 580px;
-            right: 800px;
-            font-size: 20px;
-        }
-        .submit {
-            font-family: "Audiowide", sans-serif;
-            position: absolute;
-            bottom: 500px;
-            right: 960px;
-            font-size: 30px;
-        }
-        </style>
+        <link rel="stylesheet" href="css/creg.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <title>Customer Registration</title>
     </head>
     <body>
-
-        <form action="RegCustomer.php" method="post">
-
-        <div class="name">Enter name : <input type="text" name="customer name"><br></div>
-        <div class="name">Enter name : <input type="text" name="customer name"><br></div>
-        <div class="pass">Enter password : <input type="password" name="password"><br></div>
-        <div class="addre">Enter Address : <input type="text" name="address"><br></div>
-        
-        <div class="submit"><input type="submit" name="submit" value="Register"></div>
-        </form>
-
-        <?php
-
-            if(isset($_POST['submit'])){
-                $Cus_name=$_POST['customer_name'];
-                $Cus_pass=$_POST['password'];
-                $Address=$_POST['address'];
-
-                if($Cus_name!="" && $Cus_pass!="")
-                {
-                    $sql="insert into customer values('$Cus_name','$Cus_pass','$Address')";
-                    header('location:LoginCustomer.php');   
-                }
-                else
-                {
-                    echo"Some fields may be Empty";
-                }
-
-                if($con->query($sql))
-                {
-                    echo "data stored";
-                }
-                else
-                {
-                    echo "insert data fail";
-                }
-            }
-        ?>
+        <div class="form">
+            <form action="RegCustomer.php" method="post">
+            
+                <h1 class="info">Customer name</h1>
+                    <br><input type="text" name="customer name" placeholder="Enter Name">
+                <h1 class="info">Password</h1>
+                    <br><input type="password" name="password" placeholder="Enter Password">
+                <h1 class="info">Address</h1>
+                    <br><input type="text" name="address" placeholder="Enter Address"><br>  
+                <div class="input">
+                    <button type="submit" name="submit" class="btn-info">Register</button>
+                </div>
+                <!-- Error Message -->
+                <span><?php echo $name_error; ?></span>
+            </form>
+        </div>
     </body>
 </html>

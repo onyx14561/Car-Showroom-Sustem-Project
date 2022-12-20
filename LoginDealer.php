@@ -15,7 +15,7 @@
             //Selecting Database
             $db = mysqli_select_db($conn, "car showroom");
             //sql query to fetch information of registerd user and finds user match.
-            $query = mysqli_query($conn, "SELECT * FROM dealer WHERE Deal_Pass='$pass' AND Deal_Name='$user'");
+            $query = mysqli_query($conn, "SELECT * FROM dealer WHERE BINARY Deal_Pass= BINARY '$pass' AND BINARY Deal_Name= BINARY '$user'");
             
             $rows = mysqli_num_rows($query);
             if($rows == 1){

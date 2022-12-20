@@ -15,7 +15,7 @@
             //Selecting Database
             $db = mysqli_select_db($conn, "car showroom");
             //sql query to fetch information of registerd user and finds user match.
-            $query = mysqli_query($conn, "SELECT * FROM customer WHERE Cus_Pass='$pass' AND Cus_Name='$user'");
+            $query = mysqli_query($conn, "SELECT * FROM customer WHERE BINARY Cus_Pass= BINARY '$pass' AND BINARY Cus_Name= BINARY '$user'");
             
             $rows = mysqli_num_rows($query);
             if($rows == 1){
@@ -24,7 +24,7 @@
             }
             else
             {
-                $error = "Username of Password is Invalid";
+                $error = "Username or Password is Invalid";
             }
             mysqli_close($conn); // Closing connection
         }

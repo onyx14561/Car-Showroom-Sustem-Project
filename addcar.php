@@ -6,125 +6,103 @@
         echo $con->connect_error;
         die();
     }
-    else
-    {
-        echo "Connected to Database succesfully";
-    }
 ?>
-
 <html>
     <head>
     <style>
-        /* Style inputs, select elements and textareas */
-        input[type=text], select, textarea{
-        width: 50%;
-        padding: 12px ;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        resize: vertical;
-        }
-        
-        /* Style the label to display next to the inputs */
-        label {
-        padding: 12px 12px 12px 360px;
-        display: inline-block;
-        left: 90px;
-        }
-        
-        /* Style the submit button */
-        input[type=submit] {
-        background-color: #04AA6D;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 9px;
-        cursor: pointer;
-        position:absolute;
-        right:1050px;
+        .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        font-family:
         }
 
-        input[type=file] {
-        background-color: #04AA6D;
-        color: white;
-        padding:9px;
-        border: none;
-        border-radius: 9px;
-        cursor: pointer;
-        position:absolute;
-        right: 1150px;
+        .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
         }
-        
-        /* Style the container */
-        .container {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
+
+        .sidenav a:hover {
+        color: #f1f1f1;
         }
-        
-        /* Floating column for labels: 25% width */
-        .col-25 {
-        float: left;
-        width: 25%;
-        margin-top: 6px;
+
+        .sidenav .closebtn {
+        position: absolute;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
         }
-        
-        /* Floating column for inputs: 75% width */
-        .col-75 {
-        float: left;
-        width: 75%;
-        margin-top: 6px;
-        }
-        
-        /* Clear floats after the columns */
-        .row:after {
-        content: "";
-        display: table;
-        clear: both;
-        }
-        
-        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-        @media screen and (max-width: 600px) {
-        .col-25, .col-75, input[type=submit] {
-            width: 100%;
-            margin-top: 0;
-        }
+
+        @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
         }
     </style>
-    <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/add.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+    <title>Add Car</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Add Cars</title>
     </head>
     <body>
-    <div class="add">
-    <form action="addcar.php" method="post" enctype="multipart/form-data">
-            <div class="row">
-            <div class="col-25">
-                <label>Car Price</label>
-            </div>
-            <div class="col-75">
-                <input type="text" name="car_price" placeholder="Please enter price of the car..">
-            </div>
-            </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="dhome.php">Home</a>
+        <a href="dealervehicles.php">Vehicles</a>
+        <a href="dealervehicles.php">Remove Cars</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <script>
+        function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    <div class="form">
+        <form action="addcar.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-25">
-                    <label>Car Model</label>
+                    <label>Price</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="car_price" placeholder="Please enter price of the car..">
+                </div>
+            </div>
+             <br>   
+            <div class="row">
+                <div class="col-25">
+                    <label>Model</label>
                 </div>
                 <div class="col-75">
                     <input type="text" name="car_model" placeholder="Please enter model of the car..">
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-25">
-                    <label>Car Type</label>
+                    <label>Type</label>
                 </div>
                 <div class="col-75">
                     <input type="text" name="car_type" placeholder="Please enter the type of car..">
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-25">
                     <label>Mileage</label>
@@ -133,6 +111,7 @@
                     <input type="text" name="mileage" placeholder="Enter Mileage"></textarea>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-25">
                     <label>Fueltype</label>
@@ -141,44 +120,38 @@
                     <input type="text" name="fueltype" placeholder="Enter Fueltype"></textarea>
                 </div>
             </div>
+            <br>
             <div class="form-group">
                     <div class="file">
                         <input class="form-control" type="file" name="uploadfile" value="" />
                     </div>
+                    <div class="submit">
+                        <input type="submit" name="submit" class="font-effect-fire" value="Register">
+                    </div>  
             </div>
-            <div class="submit"><input type="submit" name="submit" class="font-effect-fire" value="Register"></div></div>
+            
+            
         </form>
     </div>
-        <?php
+    <?php
 
-            if(isset($_POST['submit']) && isset($_FILES['uploadfile'])){
-                
-                $dealer=$_SESSION['dealer'];
-                $veh_price=$_POST['car_price'];
-                $veh_model=$_POST['car_model'];
-                $veh_type=$_POST['car_type'];	
-                $veh_mileage=$_POST['mileage'];	
-                $fueltype=$_POST['fueltype'];
+        if(isset($_POST['submit']) && isset($_FILES['uploadfile'])){
+            
+            $dealer=$_SESSION['dealer'];
+            $veh_price=$_POST['car_price'];
+            $veh_model=$_POST['car_model'];
+            $veh_type=$_POST['car_type'];	
+            $veh_mileage=$_POST['mileage'];	
+            $fueltype=$_POST['fueltype'];
 
-                $filename = $_FILES['uploadfile']["name"];
-                $tempname = $_FILES['uploadfile']["tmp_name"];
+            $filename = $_FILES['uploadfile']['name'];
+            $tempname = $_FILES['uploadfile']['tmp_name'];
+
+            if($veh_price!="" && $veh_model!="" && $veh_type!="" && $veh_mileage!="" && $fueltype!="")
+            {
                 $folder = "./uploads/" . $filename;
-
-                if($veh_price!="" && $veh_model!="" && $veh_type!="" && $veh_mileage!="" && $fueltype!="")
-                {
-                    $sql="insert into vehicle (deal_name,veh_price,veh_model,veh_type,veh_mileage,fueltype,vehimg) values('$dealer','$veh_price','$veh_model','$veh_type','$veh_mileage','$fueltype','$filename')";  
-                }
-                else
-                {
-                    echo"Some fields may be Empty";
-                }
-
-                if (move_uploaded_file($tempname, $folder)) {
-                    echo "<h3>  Image uploaded successfully!</h3>";
-                } else {
-                    echo "<h3>  Failed to upload image!</h3>";
-                }
-
+                move_uploaded_file($tempname,$folder);
+                $sql="insert into vehicle (deal_name,veh_price,veh_model,veh_type,veh_mileage,fueltype,vehimg) values('$dealer','$veh_price','$veh_model','$veh_type','$veh_mileage','$fueltype','$folder')";  
                 if($con->query($sql))
                 {
                     echo "data stored";
@@ -188,6 +161,11 @@
                     echo "insert data fail";
                 }
             }
-        ?>
+            else
+            {
+                echo"Some fields may be Empty";
+            }
+        }
+    ?>
     </body>
 </html>

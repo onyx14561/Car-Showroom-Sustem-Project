@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />   
     <link rel="stylesheet" href="css/stl.css">
+    <link rel="stylesheet" href="css/explore.css">
 
 </head>
 
@@ -40,22 +41,22 @@
     </header>
     <!-- header section ends -->
     <!-- login form -->
-    <div class="login-form-container">
+    <div id="login" class="login-form-container">
         <span class="fas fa-times" id="close-login-form"></span>
-            <form action="LoginCustomer.php">
-                <input type="submit" value="Customer Login" class="btn">
-            </form>
-            <form action="LoginDealer.php">
-                <input type="submit" value="Dealer Login" class="btn">
-            </form>
-            <p><div class="eg">Dont have an account ?</div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Register</button>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                    <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegCustomer.php" target="_self">Customer Registration</a></button></li>
-                    <li><button class="dropdown-item" type="button"><font size="3"><a class="dropdown-item" href="RegDealer.php" target="_self">Dealer Registration</a></button></li>
-                </ul>
-            </div></p>
+        <form action="LoginCustomer.php">
+            <input type="submit" value="Customer Login" class="btn">
+        </form>
+        <form action="LoginDealer.php">
+            <input type="submit" value="Dealer Login" class="btn">
+        </form>
+        <p><font size=6>Dont have an account ?</font></p>
+        <div class="dropdown">
+            <button class="dropbtn">Register</button>
+                <div class="dropdown-content">
+                    <a href="RegCustomer.php">Customer Registration</a>
+                    <a href="RegDealer.php">Dealer Registration</a>
+                </div>
+        </div>
     </div>
 
 
@@ -64,7 +65,7 @@
     <section class="home" id="home">
         <h1 class="home-parallax" data-speed="-2">rn's cars shop </h1>
         <img class="home-parallax" data-speed="5"  src="image/home2.png" alt="">
-        <a href="#" class="btn home-parallax" data-speed="7">explore car</a>
+        <a href="#vehicles" class="btn home-parallax" data-speed="7">explore car</a>
 
     </section>
 
@@ -116,123 +117,58 @@
 <!-- icons section ends header -->
 <section class="vehicles" id="vehicles">
 
-    <h1 class="heading"> vehicles <span>available</span> </h1>
+    <h1 class="heading"> vehicles available</h1>
+    <div class='format'>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = ""; 
+            $database = "car showroom";
 
-    <div class="swiper vehicles-slider">
 
-        <div class="swiper-wrapper">
+            // Create a connection
+            $conn = mysqli_connect($servername, $username, $password, $database);
+            $sql = "SELECT * FROM vehicle";
+            $result = mysqli_query($conn, $sql);
 
-            <div class="swiper-slide box">
-                <img src="image/vehicle-1.png" alt="">
-                <div class="content">
-                    <h3>new model</h3>
-                    <div class="price"> <span>price : </span> 762,000/- </div>
-                    <p>
-                        new
-                        <span class="fas fa-circle"></span> 2021
-                        <span class="fas fa-circle"></span> automatic
-                        <span class="fas fa-circle"></span> petrol
-                        <span class="fas fa-circle"></span> 183mph
-                    </p>
-                    <a href="#" class="btn">check out</a>
-                </div>
-            </div>
+            // Check for the database creation success
+            if($result){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $url = $row['vehimg'];
+                        $model=$row['veh_model'];
+                        $dname=$row['deal_name'];
+                        $price=$row['veh_price'];
+                        $type=$row['veh_type'];
+                        $mileage=$row['veh_mileage'];
+                        $fueltype=$row['fueltype'];
 
-            <div class="swiper-slide box">
-                <img src="image/vehicle-2.png" alt="">
-                <div class="content">
-                    <h3>new model</h3>
-                    <div class="price"> <span>price : </span> 762,000/- </div>
-                    <p>
-                        new
-                        <span class="fas fa-circle"></span> 2021
-                        <span class="fas fa-circle"></span> automatic
-                        <span class="fas fa-circle"></span> petrol
-                        <span class="fas fa-circle"></span> 183mph
-                    </p>
-                    <a href="#" class="btn">check out</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/vehicle-3.png" alt="">
-                <div class="content">
-                    <h3>new model</h3>
-                    <div class="price"> <span>price : </span> 762,000/- </div>
-                    <p>
-                        new
-                        <span class="fas fa-circle"></span> 2021
-                        <span class="fas fa-circle"></span> automatic
-                        <span class="fas fa-circle"></span> petrol
-                        <span class="fas fa-circle"></span> 183mph
-                    </p>
-                    <a href="#" class="btn">check out</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/vehicle-4.png" alt="">
-                <div class="content">
-                    <h3>new model</h3>
-                    <div class="price"> <span>price : </span> 762,000/- </div>
-                    <p>
-                        new
-                        <span class="fas fa-circle"></span> 2021
-                        <span class="fas fa-circle"></span> automatic
-                        <span class="fas fa-circle"></span> petrol
-                        <span class="fas fa-circle"></span> 183mph
-                    </p>
-                    <a href="#" class="btn">check out</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/vehicle-5.png" alt="">
-                <div class="content">
-                    <h3>new model</h3>
-                    <div class="price"> <span>price : </span> 762,000/- </div>
-                    <p>
-                        new
-                        <span class="fas fa-circle"></span> 2021
-                        <span class="fas fa-circle"></span> automatic
-                        <span class="fas fa-circle"></span> petrol
-                        <span class="fas fa-circle"></span> 183mph
-                    </p>
-                    <a href="#" class="btn">check out</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/vehicle-6.png" alt="">
-                <div class="content">
-                    <h3>new model</h3>
-                    <div class="price"> <span>price : </span> 762,000/- </div>
-                    <p>
-                        new
-                        <span class="fas fa-circle"></span> 2021
-                        <span class="fas fa-circle"></span> automatic
-                        <span class="fas fa-circle"></span> petrol
-                        <span class="fas fa-circle"></span> 183mph
-                    </p>
-                    <a href="#" class="btn">check out</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination"></div>
-
+                        echo "
+                            <div class='format'>
+                                <img src='{$url}' width='500'><br>
+                                <div class='content'>
+                                <h3>{$model}</h3>
+                                <p>Dealer : {$dname}</p>
+                                <div class='price'> <span>price : </span> {$price} </div>
+                                    <p>
+                                        
+                                        <i class='fa fa-circle' aria-hidden='true'></i> {$type}
+                                        <i class='fa fa-circle' aria-hidden='true'></i> {$fueltype}
+                                        <i class='fa fa-circle' aria-hidden='true'></i> {$mileage}
+                                    </p>
+                                    <button onclick='loginpls()' class='btn'><a href='#login' class='btn'>check out</a></button>
+                                </div>
+                            </div>
+                            <br>";
+                    }
+            }
+        ?>
     </div>
-
 </section>
-
-
-
-
-
-
-
-
+    <script>
+        function loginpls() {
+        alert("You need to login first!!");
+        }
+    </script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="js/scrpt.js"></script>
 </body>
